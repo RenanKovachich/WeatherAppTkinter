@@ -24,18 +24,28 @@ def gerenateWeather():
 
         weather_window = tk.Tk()
         weather_window.title(f"{CITY} Weather")
-        weather_window.config(padx=20, pady=100)
+        weather_window.geometry("390x844")
+        weather_window.config(bg='#0B2447')
 
-        temperature_label = tk.Label(weather_window, text=f'Weather: {round(temperature - 273.15, 2)} ºC')
+        hello_msg = tk.Label(weather_window, text="Hello!", font=('Arial', 32), bg='#0B2447', fg='white')
+        hello_msg.place(x=10, y=10)
+
+        check_weather = tk.Label(weather_window, text="Check weather location", font=('Arial', 12), bg='#0B2447',
+                                 fg='white')
+        check_weather.place(x=10, y=55)
+
+        temperature_label = tk.Label(weather_window, text=f'Weather: {round(temperature - 273.15, 2)} ºC', font=("Arial"
+                                                                                                                 , 20))
         temperature_label.pack()
 
-        humidity_label = tk.Label(weather_window, text=f'Humidity: {humidity}%')
+        humidity_label = tk.Label(weather_window, text=f'Humidity: {humidity}%', font=("Arial", 20))
         humidity_label.pack()
 
-        pressure_label = tk.Label(weather_window, text=f'Pressure: {pressure/1000} KPa')
+        pressure_label = tk.Label(weather_window, text=f'Pressure: {pressure/1000} KPa', font=("Arial", 20))
         pressure_label.pack()
 
-        weather_report_label = tk.Label(weather_window, text=f'Dresciption: {report[0]["description"]}')
+        weather_report_label = tk.Label(weather_window, text=f'Dresciption: {report[0]["description"]}', font=("Arial",
+                                                                                                               20))
         weather_report_label.pack()
 
         print(f"{CITY:-^30}")
@@ -67,15 +77,15 @@ if __name__ == "__main__":
     # window.mainloop()
     window = tk.Tk()
     window.title("Weather App")
-    window.config(padx=10, pady=50)
+    window.geometry("220x200+10+20")
 
-    city_label = tk.Label(window, text="Nome da cidade: ")
-    city_label.pack()
+    city_label = tk.Label(window, text="City name: ")
+    city_label.place(x=10, y=50)
 
     city_entry = tk.Entry(window)
-    city_entry.pack()
+    city_entry.place(x=80, y=51)
 
     get_weather_button = tk.Button(window, text="Get Weather", command=gerenateWeather)
-    get_weather_button.pack()
+    get_weather_button.place(x=75, y=100)
 
     window.mainloop()
